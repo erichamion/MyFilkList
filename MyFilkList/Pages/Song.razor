@@ -1,0 +1,16 @@
+@page "/Songs/{NavKey}"
+
+<div class="song-container">
+    @if (_songDetail is not null)
+    {
+        <h3 class="song-title">@_songDetail.Title</h3>
+        <SongLinkList Links="@_songDetail.Links" />
+        <GoogleDocEmbed EmbedUrl="@_songDetail.GoogleEmbedUrl" />
+    }
+    else
+    {
+        <h3>Not Found</h3>
+        <p>Sorry, this page could not be found.</p>
+    }
+</div>
+

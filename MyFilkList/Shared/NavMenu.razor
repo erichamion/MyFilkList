@@ -1,4 +1,5 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using MyFilkList.Models
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">MyFilkList</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -8,7 +9,20 @@
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    
     <nav class="flex-column">
+        @if (_songs is not null)
+        {
+            @foreach (var song in _songs)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="@("Songs/" + song.NavKey)" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> @song.Title
+                    </NavLink>
+                </div>
+            }    
+        }
+        
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
@@ -26,15 +40,3 @@
         </div>
     </nav>
 </div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-
-}

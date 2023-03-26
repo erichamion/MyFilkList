@@ -1,0 +1,13 @@
+.song-embed-container {
+    width: 80%;
+    text-align: center;
+}
+
+iframe.song-embed-frame {
+    width: 80%;
+    min-width: 45rem;
+    height: 70vh;
+    min-height: 55rem;
+    border: 3px inset slategray;
+    border-radius: 1rem;
+}
